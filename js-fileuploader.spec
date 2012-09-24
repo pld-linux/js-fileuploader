@@ -2,7 +2,7 @@
 Summary:	Multiple file upload plugin with progress-bar, drag-and-drop
 Name:		js-%{plugin}
 Version:	2.0
-Release:	1
+Release:	2
 License:	MIT, GPL v2 or LGPL v2
 Group:		Applications/WWW
 Source0:	https://github.com/downloads/valums/file-uploader/%{version}.zip
