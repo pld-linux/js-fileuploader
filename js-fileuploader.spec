@@ -2,7 +2,7 @@
 Summary:	Multiple file upload plugin with progress-bar, drag-and-drop
 Name:		js-%{plugin}
 Version:	2.0
-Release:	2
+Release:	4
 License:	MIT, GPL v2 or LGPL v2
 Group:		Applications/WWW
 Source0:	https://github.com/downloads/valums/file-uploader/%{version}.zip
@@ -51,8 +51,16 @@ Demonstrations and samples for %{plugin}.
 cat > apache.conf <<'EOF'
 Alias /js/%{plugin} %{_appdir}
 <Directory %{_appdir}>
-	Allow from all
 	Options +FollowSymLinks
+	# Apache 2.x
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Allow from all
+	</IfModule>
+	# Apache 2.4
+	<IfModule mod_authz_core.c>
+		Require all granted
+	</IfModule>
 </Directory>
 EOF
 
